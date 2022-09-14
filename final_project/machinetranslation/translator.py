@@ -24,16 +24,17 @@ def englishToFrench(englishText):
     Translating English text to French
     '''
     french_text_trans = language_translator.translate(text=englishText, model_id='en-fr').get_result()
-    frenchText0 = json.dumps(french_text_trans)
-    frenchText1 = json.loads(frenchText0)
-    frenchText = frenchText1['translations'][0]['translation']
-    return frenchText
+    #frenchText0 = json.dumps(french_text_trans)
+    #frenchText1 = json.loads(frenchText0)
+    #frenchText = frenchText1['translations'][0]['translation']
+    return french_text_trans.get('translations')[0].get('translation')
 
 def frenchToEnglish(frenchText):
     '''
     Translating French text to English
     '''
-    english_text_trans = language_translator.translate(text=frenchText,
-                                            model_id='fr-en').get_result()
-    englishText = json.dumps(english_text_trans,indent=2)
+    english_text_trans = language_translator.translate(text=frenchText,model_id='fr-en').get_result()
+    englishText0 = json.dumps(english_text_trans,indent=2)
+    englishText1 = json.loads(englishText0)
+    englishText = englishText1['translations'][0]['translation']
     return englishText
